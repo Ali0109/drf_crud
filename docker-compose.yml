@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/drf_crud
+    ports:
+      - 8000:8000
+    image: app:drf_crud
+    container_name: drf_container
+    command: python manage.py runserver 0.0.0.0:8000
+    networks:
+      - mysql-network
+
+networks:
+  mysql-network:
+    external:
+      name: mysql-network
+
