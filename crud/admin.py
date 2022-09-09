@@ -1,3 +1,16 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
 
-# Register your models here.
+from crud.models import *
+
+
+@admin.register(Data)
+class DataAdmin(admin.ModelAdmin):
+    list_display = [
+        "id",
+        "name",
+        "phone",
+        "region",
+        "country",
+    ]
+

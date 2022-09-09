@@ -6,6 +6,8 @@ from django.db import connection
 from crud.models import *
 from core.settings import BASE_DIR
 
+from openpyxl import load_workbook
+
 
 def check_foreign_key(check_num):
     cursor = connection.cursor()
@@ -39,3 +41,10 @@ def dbSeed():
     dataSeed()
     check_foreign_key(1)
     print("All data seeded successfully!")
+
+
+def excel():
+    wb = load_workbook(filename='media/csv/data.xlsx')
+    sheet = wb['Sheet2']
+    print(sheet)
+
